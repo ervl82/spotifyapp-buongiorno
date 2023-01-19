@@ -14,16 +14,19 @@ Currently the following are the potential solutions:
   Use sp_doc and sp_key cookies to generate an access token. The cookies last for 1 year and the token for 1 hour but it's re-generated after 1 hour by running the code if it expired. 
   
   Verdict: ONLY WORKS WITH WEB PLAYER SCOPE AND NOT FOR PRIVATE PLAYLIST EDITING (ERROR 403)
+  
   Source: https://github.com/enriquegh/spotify-webplayer-token
   
 - SOLUTION 3: 
   Use a cache handler in the code to generate first token locally and then store it as an environment variable to be called in the code
   
   Verdict: TO BE TESTED
+  
   Source: https://github.com/spotipy-dev/spotipy/issues/632; https://github.com/spotipy-dev/spotipy/issues/852
   
 - SOLUTION 4: 
   Create a selenium bot clicking through login and authenticating as if browser prompt was opening. Should work with GitHub actions 
   
   Verdict: TO BE TESTED
+  
   Source: https://github.com/lukethacoder/spotify-playlist-backup
