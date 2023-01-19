@@ -8,6 +8,7 @@ Currently the following are the potential solutions:
 
 - SOLUTION 1: 
   Run the spotifyappervl8.py script locally as it always works. 
+  
   Verdict: NOT SUITABLE AS CRON JOB IS NEEDED
   
 - SOLUTION 2: 
