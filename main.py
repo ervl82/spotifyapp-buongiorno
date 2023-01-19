@@ -49,9 +49,9 @@ if token_info:
     print('Access Token: '+ spotify_token )
 else:
     print('Cached token not found. Getting Access Token')
-    token_info = sp_oauth.get_access_token()
-    spotify_token = token_info['access_token']
-    print('Access Token: '+ spotify_token)
+#     token_info = sp_oauth.get_access_token()
+#     spotify_token = token_info['access_token']
+#     print('Access Token: '+ spotify_token)
 
 if spotify_token:
     print('Access token available! Trying to get user information...')
