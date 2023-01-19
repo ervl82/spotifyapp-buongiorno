@@ -49,7 +49,7 @@ if token_info:
     print('Access Token: '+ spotify_token )
 else:
     print('Cached token not found. Getting Access Token')
-    token_info = sp_oauth.get_access_token(as_dict=False)
+    token_info = sp_oauth.get_access_token(as_dict=False, open_browser=False)
     spotify_token = token_info
     print('Access Token: '+ spotify_token)
 
