@@ -178,8 +178,6 @@ tokens2 = response2.text
 tokens_parsed2 = json.loads(tokens2)
 
 print('\nParsing and extracting tokens...')
-print(tokens2)
-print(token_parsed2)
 SPOTIFY_CLIENT_TOKEN = tokens_parsed2['access_token']
 # SPOTIFY_CLIENT_REFRESH_TOKEN = tokens_parsed2['refresh_token']
 
