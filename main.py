@@ -31,6 +31,8 @@ SPOTIFY_CLIENT_REFRESH_TOKEN = os.getenv('SPOTIFY_CLIENT_REFRESH_TOKEN')
 
 AUTH_SCOPE = "playlist-modify-private playlist-read-collaborative playlist-read-private playlist-modify-public user-library-read user-library-modify user-top-read user-read-recently-played"
 
+# # This commented out section below is needed for the first time the script is run on a virtual machine. It helps generate a refresh token that can then be used indefintely. It uses a headless selenium bot to give authorization on behalf of the user to the app
+
 # # Define base url for authorization site and define response type
 # auth_url_base = 'https://accounts.spotify.com/authorize?'
 # response_type = 'code'
