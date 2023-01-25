@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import spotipy.util as util
-import pandas as pd
 from pathlib import Path
 import json
 import requests # to make requests to API
