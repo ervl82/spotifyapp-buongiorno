@@ -31,10 +31,6 @@ SPOTIFY_CLIENT_REFRESH_TOKEN = os.getenv('SPOTIFY_CLIENT_REFRESH_TOKEN')
 
 AUTH_SCOPE = "playlist-modify-private playlist-read-collaborative playlist-read-private playlist-modify-public user-library-read user-library-modify user-top-read user-read-recently-played"
 
-print(SPOTIFY_CLIENT_REFRESH_TOKEN)
-
-SPOTIFY_CLIENT_REFRESH_TOKEN
-
 # # Define base url for authorization site and define response type
 # auth_url_base = 'https://accounts.spotify.com/authorize?'
 # response_type = 'code'
@@ -160,122 +156,122 @@ SPOTIFY_CLIENT_REFRESH_TOKEN
 # print(SPOTIFY_CLIENT_REFRESH_TOKEN)
 
 
-# grant_type2 = 'refresh_token'
-# body2 = {
-#   'grant_type':grant_type2,
-#   'refresh_token': SPOTIFY_CLIENT_REFRESH_TOKEN
-# }
+grant_type2 = 'refresh_token'
+body2 = {
+  'grant_type':grant_type2,
+  'refresh_token': SPOTIFY_CLIENT_REFRESH_TOKEN
+}
 
-# client_params2 = SPOTIFY_CLIENT_ID + ':' + SPOTIFY_CLIENT_SECRET
-# encoded_client_params2 = base64.b64encode(client_params2.encode('ascii'))
-# headers2 = {'Authorization': 'Basic ' + encoded_client_params2.decode('ascii')}
+client_params2 = SPOTIFY_CLIENT_ID + ':' + SPOTIFY_CLIENT_SECRET
+encoded_client_params2 = base64.b64encode(client_params2.encode('ascii'))
+headers2 = {'Authorization': 'Basic ' + encoded_client_params2.decode('ascii')}
 
-# response2 = requests.post(
-#   'https://accounts.spotify.com/api/token',
-#   data = body2,
-#   headers = headers2
-# )
+response2 = requests.post(
+  'https://accounts.spotify.com/api/token',
+  data = body2,
+  headers = headers2
+)
 
-# print(response2)
+print(response2)
 
-# tokens2 = response2.text
-# tokens_parsed2 = json.loads(tokens2)
+tokens2 = response2.text
+tokens_parsed2 = json.loads(tokens2)
 
-# print('\nParsing and extracting tokens...')
-# print(tokens2)
-# print(token_parsed2)
-# SPOTIFY_CLIENT_TOKEN = tokens_parsed2['access_token']
-# # SPOTIFY_CLIENT_REFRESH_TOKEN = tokens_parsed2['refresh_token']
+print('\nParsing and extracting tokens...')
+print(tokens2)
+print(token_parsed2)
+SPOTIFY_CLIENT_TOKEN = tokens_parsed2['access_token']
+# SPOTIFY_CLIENT_REFRESH_TOKEN = tokens_parsed2['refresh_token']
 
-# print(SPOTIFY_CLIENT_TOKEN)
-# # print(SPOTIFY_CLIENT_REFRESH_TOKEN)
+print(SPOTIFY_CLIENT_TOKEN)
+# print(SPOTIFY_CLIENT_REFRESH_TOKEN)
 
-# # set Playlists ids from Spotify
-# buongiorno = "6gp8NsLGHOpldIqBUukJQV"
-
-
-# # get playlist current episodes and store in a delete list to delete them later
-# playlist_url = f"https://api.spotify.com/v1/playlists/{buongiorno}/tracks"
-# playlist_response = requests.get(
-#         playlist_url,
-#         headers ={
-#             "Content_Type": "application/json", 
-#             "Authorization" : f"Bearer {SPOTIFY_CLIENT_TOKEN}"
-#         }
-#     )
-# playlist_json = playlist_response.json()
-
-# playlist_json_items = playlist_json['items']
-# delete_episode_uri_list = []
-# for item in playlist_json_items:
-#     delete_episode_uri = item['track']['uri']
-#     delete_episode_uri_list.append(delete_episode_uri)
-# print(delete_episode_uri_list)
+# set Playlists ids from Spotify
+buongiorno = "6gp8NsLGHOpldIqBUukJQV"
 
 
-# #remove episodes in the delete list from playlist and print delete confirmations as snapshot_ids
-# for delete_episode in delete_episode_uri_list:
-#     playlist_remove_url = f"https://api.spotify.com/v1/playlists/{buongiorno}/tracks"
-#     playlist_remove_response = requests.delete(
-#         playlist_remove_url,
-#         headers ={
-#             "Accept": "application/json",
-#             "Content_Type": "application/json", 
-#             "Authorization" : f"Bearer {SPOTIFY_CLIENT_TOKEN}"
-#         },
-#         json = {
-#             'tracks': [
-#                 {'uri': delete_episode_uri_list[0]},
-#                 {'uri': delete_episode_uri_list[1]},
-#                 {'uri': delete_episode_uri_list[2]}
-#             ]
-#         }
-#     )
-#     playlist_remove_json = playlist_remove_response.json()
-#     playlist_remove_json
+# get playlist current episodes and store in a delete list to delete them later
+playlist_url = f"https://api.spotify.com/v1/playlists/{buongiorno}/tracks"
+playlist_response = requests.get(
+        playlist_url,
+        headers ={
+            "Content_Type": "application/json", 
+            "Authorization" : f"Bearer {SPOTIFY_CLIENT_TOKEN}"
+        }
+    )
+playlist_json = playlist_response.json()
+
+playlist_json_items = playlist_json['items']
+delete_episode_uri_list = []
+for item in playlist_json_items:
+    delete_episode_uri = item['track']['uri']
+    delete_episode_uri_list.append(delete_episode_uri)
+print(delete_episode_uri_list)
 
 
-# # set shows ids from Spotify and print list
-# in4minuti = "33YWzJrR8RkFFdocLDSc3c"
-# the_essential = "43A9fUmUbLYaHKSi1lAtn5"
-# start ="0tbtlfiFG6pK91TiARb9vQ"
-# shows_list = []
-# shows_list.append(in4minuti)
-# shows_list.append(the_essential)
-# shows_list.append(start)
-# shows_list
+#remove episodes in the delete list from playlist and print delete confirmations as snapshot_ids
+for delete_episode in delete_episode_uri_list:
+    playlist_remove_url = f"https://api.spotify.com/v1/playlists/{buongiorno}/tracks"
+    playlist_remove_response = requests.delete(
+        playlist_remove_url,
+        headers ={
+            "Accept": "application/json",
+            "Content_Type": "application/json", 
+            "Authorization" : f"Bearer {SPOTIFY_CLIENT_TOKEN}"
+        },
+        json = {
+            'tracks': [
+                {'uri': delete_episode_uri_list[0]},
+                {'uri': delete_episode_uri_list[1]},
+                {'uri': delete_episode_uri_list[2]}
+            ]
+        }
+    )
+    playlist_remove_json = playlist_remove_response.json()
+    playlist_remove_json
 
 
-# #get shows episodes and store latest episode uri for each show into a list, print episodes uri list
-# episodes_uri_list = []
-# for show in shows_list:
-#     episode_url = f"https://api.spotify.com/v1/shows/{show}/episodes"
-#     episode_response = requests.get(
-#         episode_url,
-#         headers ={
-#             "Content_Type": "application/json", 
-#             "Authorization" : f"Bearer {SPOTIFY_CLIENT_TOKEN}"
-#         }
-#     )
-#     episodes_json = episode_response.json()
+# set shows ids from Spotify and print list
+in4minuti = "33YWzJrR8RkFFdocLDSc3c"
+the_essential = "43A9fUmUbLYaHKSi1lAtn5"
+start ="0tbtlfiFG6pK91TiARb9vQ"
+shows_list = []
+shows_list.append(in4minuti)
+shows_list.append(the_essential)
+shows_list.append(start)
+shows_list
+
+
+#get shows episodes and store latest episode uri for each show into a list, print episodes uri list
+episodes_uri_list = []
+for show in shows_list:
+    episode_url = f"https://api.spotify.com/v1/shows/{show}/episodes"
+    episode_response = requests.get(
+        episode_url,
+        headers ={
+            "Content_Type": "application/json", 
+            "Authorization" : f"Bearer {SPOTIFY_CLIENT_TOKEN}"
+        }
+    )
+    episodes_json = episode_response.json()
     
-#     episode_uri = episodes_json['items'][0]['uri']
-#     episodes_uri_list.append(episode_uri)
+    episode_uri = episodes_json['items'][0]['uri']
+    episodes_uri_list.append(episode_uri)
     
-# print(episodes_uri_list)
+print(episodes_uri_list)
 
-# #add episodes to playlist based on uri value stored in episodes uri list, and print add confirmations as snapshot_ids
-# for episode_uri in episodes_uri_list:
-#     playlist_add_url = f"https://api.spotify.com/v1/playlists/{buongiorno}/tracks?uris={episode_uri}"
-#     playlist_add_response = requests.post(
-#         playlist_add_url,
-#         headers ={
-#             "Content_Type": "application/json", 
-#             "Authorization" : f"Bearer {SPOTIFY_CLIENT_TOKEN}"
-#         }
-#     )
-#     playlist_add_json = playlist_add_response.json()
-#     playlist_add_json
+#add episodes to playlist based on uri value stored in episodes uri list, and print add confirmations as snapshot_ids
+for episode_uri in episodes_uri_list:
+    playlist_add_url = f"https://api.spotify.com/v1/playlists/{buongiorno}/tracks?uris={episode_uri}"
+    playlist_add_response = requests.post(
+        playlist_add_url,
+        headers ={
+            "Content_Type": "application/json", 
+            "Authorization" : f"Bearer {SPOTIFY_CLIENT_TOKEN}"
+        }
+    )
+    playlist_add_json = playlist_add_response.json()
+    playlist_add_json
 
 
-# print('Automation script has finished')
+print('Automation script has finished')
