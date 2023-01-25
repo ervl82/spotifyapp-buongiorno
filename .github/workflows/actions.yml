@@ -1,8 +1,19 @@
 name: run main.py
 
 on:
-  schedule:
-    - cron: '5 17 * * *' # At 08:00 everyday
+#   schedule:
+#     - cron: '5 17 * * *' # At 08:00 everyday
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning' 
+        type: choice
+        options:
+        - info
+        - warning
+        - debug 
 
 jobs:
   build:
@@ -11,6 +22,8 @@ jobs:
 
       - name: checkout repo content
         uses: actions/checkout@v3 # checkout the repository content to github runner
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: setup python
         uses: actions/setup-python@v4
@@ -23,4 +36,12 @@ jobs:
           pip install -r requirements.txt
           
       - name: execute py script # run main.py
+        env:
+# Part of the webdriver manager - needs GH_TOKEN so the github driver download doesn't timeout
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          SPOTIFY_USERNAME: ${{ secrets.SPOTIFY_USERNAME }}
+          SPOTIFY_PASSWORD: ${{ secrets.SPOTIFY_PASSWORD }}
+      
         run: python main.py
