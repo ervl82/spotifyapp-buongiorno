@@ -52,7 +52,7 @@ print('Directing to Spotify Authorization page...')
 
 # Create selenium options
 options = FirefoxOptions()
-# options.add_argument("--headless")
+options.add_argument("--headless")
 
 # Create selenium driver
 driver = webdriver.Firefox(
