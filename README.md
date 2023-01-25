@@ -26,8 +26,8 @@ Currently the following are the potential solutions:
   Source: https://github.com/spotipy-dev/spotipy/issues/632; https://github.com/spotipy-dev/spotipy/issues/852
   
 - SOLUTION 4: 
-  Create a selenium bot clicking through login and authenticating as if browser prompt was opening. Should work with GitHub actions 
+  Create a headless selenium bot clicking through login and authenticating as if browser prompt was opening. It works with GitHub actions. After first run a regresh token is generated and from then on that can be used indefintely to generate new access tokens on behalf of the user
   
-  Verdict: TO BE TESTED
+  Verdict: IT WORKS! BEING USED RIGHT NOW
   
   Source: https://github.com/lukethacoder/spotify-playlist-backup
