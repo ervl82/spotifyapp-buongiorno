@@ -41,5 +41,6 @@ jobs:
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           SPOTIFY_USERNAME: ${{ secrets.SPOTIFY_USERNAME }}
           SPOTIFY_PASSWORD: ${{ secrets.SPOTIFY_PASSWORD }}
+          SPOTIFY_CLIENT_REFRESH_TOKEN: ${{ secrets.SPOTIFY_CLIENT_REFRESH_TOKEN }}
       
         run: python main.py
