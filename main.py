@@ -223,7 +223,8 @@ for delete_episode in delete_episode_uri_list:
             'tracks': [
                 {'uri': delete_episode_uri_list[0]},
                 {'uri': delete_episode_uri_list[1]},
-                {'uri': delete_episode_uri_list[2]}
+                {'uri': delete_episode_uri_list[2]},
+                {'uri': delete_episode_uri_list[3]}
             ]
         }
     )
@@ -234,11 +235,13 @@ for delete_episode in delete_episode_uri_list:
 # set shows ids from Spotify and print list
 in4minuti = "33YWzJrR8RkFFdocLDSc3c"
 the_essential = "43A9fUmUbLYaHKSi1lAtn5"
-start ="0tbtlfiFG6pK91TiARb9vQ"
+start = "0tbtlfiFG6pK91TiARb9vQ"
+stories = "1FaCiqGahURjjO42JOMiyd"
 shows_list = []
 shows_list.append(in4minuti)
 shows_list.append(the_essential)
 shows_list.append(start)
+shows_list.append(stories)
 shows_list
 
 
