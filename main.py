@@ -203,7 +203,7 @@ playlist_json = playlist_response.json()
 
 playlist_json_items = playlist_json['items']
 delete_episode_uri_list = []
-for item in playlist_json_items:
+for item in playlist_json_items[1:]:
     delete_episode_uri = item['track']['uri']
     delete_episode_uri_list.append(delete_episode_uri)
 print(delete_episode_uri_list)
