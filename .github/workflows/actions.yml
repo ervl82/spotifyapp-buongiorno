@@ -2,7 +2,7 @@ name: run main.py
 
 on:
   schedule:
-    - cron: '0 7 * * *' # At 07:00 everyday
+    - cron: '0 11 * * *' # At 07:00 everyday
 # uncomment the workflow_dispatch below to add the option to run the workflow manually
 #   workflow_dispatch:
 #     inputs:
