@@ -253,7 +253,7 @@ else:
 
 # Get episodes from a list of shows
 episodes_uri_list = []
-shows_list = ["33YWzJrR8RkFFdocLDSc3c", "43A9fUmUbLYaHKSi1lAtn5", "0tbtlfiFG6pK91TiARb9vQ","1FaCiqGahURjjO42JOMiyd"]
+shows_list = ["43A9fUmUbLYaHKSi1lAtn5", "0tbtlfiFG6pK91TiARb9vQ","1FaCiqGahURjjO42JOMiyd","0lWdGG4S6k8tAuuYMGhMNY", "4NnfkFnczUPV06Nl6PDhZO"]
 for show in shows_list:
     try:
         episode_url = f"https://api.spotify.com/v1/shows/{show}/episodes"
