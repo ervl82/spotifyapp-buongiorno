@@ -1,4 +1,4 @@
-# actions-test
+# buongiorno app
 
 The end goal is to create an automation to add everyday to a given playlist the new episodes of selected daily new podcasts and delete the old ones. The playlist, called Buongiorno, will then everyday only have 3 podcasts episodes which are the current day ones. A trigger has been added to the Google Home Mini device via the Google Home app so that whn hearing the command "Hey Google, buongiorno", it will automatically play the playlist and in the morning I can listen to 15 mins of my favorite news podcasts. 
 
