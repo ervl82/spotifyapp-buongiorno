@@ -14,7 +14,7 @@ import json  # For handling JSON responses
 import time  # For adding delays between retries
 from secrets import *  # Assuming clientId, clientSecret, redirect_url2
 import spotipy  # For interacting with the Spotify API
-from spotipy.oauth2 import SpotifyOAuth  # For OAuth2 authentication
+from spotipy.oauth2 import SpotifyOAuth  # For OAuth2 authenticatio
 
 
 # Define the scope and authenticate
